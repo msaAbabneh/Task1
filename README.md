@@ -40,4 +40,29 @@ $ heroku open
 For more information about using Java on Heroku, see these Dev Center articles:
 
 - [Java on Heroku](https://devcenter.heroku.com/categories/java)
-# Task1
+
+## Instruction:(setting the site up in a local Environment)
+- git clone https://github.com/msaAbabneh/Task.git
+- cd Task
+- mvn clean install
+- heroku local web
+
+Your app should now be running on http://localhost:5000/
+
+
+## Environment Comments: 
+
+- TO Add new searchable field dynamically ,  add it's name and label in the    	serchableFields.properties and increment the NUMBER_OF_FIELDS in the same 	file by 1.
+
+- The Application was built and deployed by Travis-ci.
+
+- After every commit the Travis-ci will get the source code and build 
+  it and deploy it on the HEROKU based on the .travis.yml file content.
+
+
+- The system is built as a simple site.
+
+- The validation on the client input didn't considered.
+
+
+ 
