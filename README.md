@@ -42,8 +42,8 @@ For more information about using Java on Heroku, see these Dev Center articles:
 - [Java on Heroku](https://devcenter.heroku.com/categories/java)
 
 ## Instruction:(setting the site up in a local Environment)
-- git clone https://github.com/msaAbabneh/Task.git
-- cd Task
+- git clone https://github.com/msaAbabneh/Task1.git
+- cd Task1
 - mvn clean install
 - heroku local web
 
