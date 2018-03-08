@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Hotel Deals</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(
+			function(ev) {
+				$('#custom_carousel').on(
+						'slide.bs.carousel',
+						function(evt) {
+							$('#custom_carousel .controls li.active')
+									.removeClass('active');
+							$(
+									'#custom_carousel .controls li:eq('
+											+ $(evt.relatedTarget).index()
+											+ ')').addClass('active');
+						})
+			});
+</script>
+
+<link
+	href="http://www.tutorialspoint.com/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="stylesheets/one-page-wonder.css" rel="stylesheet">
+
+<style>
+body {
+	padding-top: 20px
+}
+
+#custom_carousel .item {
+	color: #000;
+	padding: 20px 0;
+}
+
+#custom_carousel .controls {
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding: 0;
+	margin: 0;
+	white-space: nowrap;
+	text-align: center;
+	position: relative;
+	background: #ddd
+}
+
+#custom_carousel .controls li {
+	display: table-cell;
+	width: 1%;
+	max-width: 90px
+}
+
+#custom_carousel .controls li.active {
+	background-color: #eee;
+	border-top: 3px solid orange;
+}
+
+#custom_carousel .controls a small {
+	overflow: hidden;
+	display: block;
+	font-size: 10px;
+	margin-top: 5px;
+	font-weight: bold
+}
+</style>
+
+</head>
+<body>
+
+	<form action="search">
+
+		<div class="form-group row" align="center">
+			<h1>Hotel's Deals</h1>
+			<p><h5>Find your ideal hotel
+			</h5>
+			</p>
+		</div>
+		<div class="container">
+
+			<div class="form-group row">
+
+				<div class="form-group row">
+					<th:block th:each="field : ${filter.searchableFields}">
+
+						<div class="col-xs-3">
+							<label th:for="${field.name}"><span
+								th:text="${field.lable}"></span></label> <input type="text"
+								class="form-control" th:id="${field.name}"
+								style="background-color: white;" th:name="${field.name}"
+								th:value="${field.value}" />
+
+						</div>
+					</th:block>
+				</div>
+
+				<div class="form-group row">
+					<input type="submit" class="btn btn-info" value="Search">
+				</div>
+			</div>
+		</div>
+
+		<div class="featurette" id="about">
+			<div class="container-fluid">
+				<div id="custom_carousel" class="carousel slide"
+					data-ride="carousel" data-interval="2500">
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+
+						<th:block th:each="hotel : ${hotels}">
+							<div th:class="${hotel.index==0}?'item active' : item">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-md-3">
+											<img th:src="${hotel.hotelImageUrl}" class="img-responsive">
+										</div>
+										<div class="col-md-9">
+											<h2>
+												<span th:text="${hotel.hotelName}"></span>
+											</h2>
+
+
+											<dl>
+												<dt>Contry</dt>
+												<dd>
+													- <span th:text="${hotel.contry}"></span>
+												</dd>
+												<dt>City</dt>
+												<dd>
+													- <span th:text="${hotel.city}"></span>
+												</dd>
+
+												<dt>Street Address</dt>
+												<dd>
+													- <span th:text="${hotel.streetAddress}"></span>
+												</dd>
+												<dt>Star Rating</dt>
+												<dd>
+													- <span th:text="${hotel.rate}"></span>
+												</dd>
+											</dl>
+
+
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</th:block>
+						<!-- End Item -->
+					</div>
+					<!-- End Carousel Inner -->
+					<div class="controls">
+						<ul class="nav">
+
+							<th:block th:each="hotel : ${hotels}">
+								<li data-target="#custom_carousel"
+									th:data-slide-to="${hotel.index}"
+									th:class="${hotel.index==0} ? active "><a href="#"><img
+										th:src="${hotel.hotelImageUrl}"><small><span
+											th:text="${hotel.hotelName}"></span></small></a></li>
+							</th:block>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
+
+
