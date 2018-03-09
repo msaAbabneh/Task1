@@ -1,3 +1,5 @@
+script:
+ - chmod +x ./gradlew build connectedCheck
 language: java
 jdk:
 - oraclejdk8
