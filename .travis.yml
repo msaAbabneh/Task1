@@ -1,6 +1,6 @@
 language: java
 
 deploy:
-  provider:heroku
-  api_key:ba99647a-7e9c-4c3d-b8bc-583e4e765a55
-  app:cryptic-wave-85088
+  provider: heroku
+  api_key: ba99647a-7e9c-4c3d-b8bc-583e4e765a55
+  app: cryptic-wave-85088
